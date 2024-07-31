@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { VideoType } from '@/types/VideoType';
 import { useRouter } from 'next/navigation';
@@ -69,7 +69,9 @@ const ReleatedVideoCard: React.FC<VideoProps> = ({ video }) => {
                 <Image
                   src={video.attributes.thumbnail}
                   alt={video.attributes.title}
-                  layout="fill"
+                  fill
+                  priority   
+                  sizes="(max-width: 600px) 100vw, 50vw"
                   style={{ objectFit: 'cover' }}
                   className="absolute inset-0 w-full h-full rounded-lg"
                 />
@@ -93,9 +95,7 @@ const ReleatedVideoCard: React.FC<VideoProps> = ({ video }) => {
         <h2 className="text-lg md:text-xl font-bold">{video.attributes.title}</h2> 
         <p className="text-sm font-light mt-1 md:mt-2">{video.attributes.description}</p> 
         <div className="flex items-center mt-1 md:mt-2"> 
-          <span className="text-xs md:text-sm text-gray-500 mr-1 md:mr-2">100 görüntülenme</span> 
-          <span className="inline-metadata-item text-xs md:text-sm text-gray-500 mr-1 md:mr-2"> | </span> 
-          <span className="text-xs md:text-sm text-gray-500">{getTimeAgo(video.attributes.createdAt)}</span> 
+          <span className="text-sm">{getTimeAgo(video.attributes.createdAt)}</span> 
         </div>
       </div>
     </div>

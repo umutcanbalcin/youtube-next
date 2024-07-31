@@ -4,8 +4,11 @@ import React, { useEffect, useState } from 'react';
 import VideoCard from './VideoCard';
 import { VideoType } from '@/types/VideoType';
 
+interface videoListProp{
+  searchVideos?:VideoType[] | null;
+}
 
-const VideoList: React.FC = () => {
+const VideoList: React.FC<videoListProp> = ({searchVideos}) => {
   const [videos, setVideos] = useState<VideoType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
  
@@ -30,8 +33,7 @@ const VideoList: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-4">
         {videos.length === 0 ? (
           <p>No videos available</p>
-        ) : (
-          videos.map((video) => <VideoCard key={video.id} video={video} />)
+        ) : ( searchVideos ? (searchVideos.map((video) => <VideoCard key={video.id} video={video} />)):(videos.map((video) => <VideoCard key={video.id} video={video} />))
         )}
       </div>
     </div>

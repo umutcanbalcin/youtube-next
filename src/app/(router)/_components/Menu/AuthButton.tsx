@@ -10,18 +10,19 @@ import LoginButton from './LoginButton';
 
 const AuthButton = () => {
       const user = useRecoilValue(userAtom);
+      console.log(user);
       let avatarContent = (
         <LoginButton/>
       );
-    
       if (user && user.attributes.profilePicture) {
+        const name = user?.attributes.name;
         avatarContent = (
        
           <DropdownMenu>
           <DropdownMenuTrigger asChild>
               <Avatar className='w-12 h-12' >
               <AvatarImage src={user.attributes.profilePicture} />
-              <AvatarFallback>UB</AvatarFallback>
+              <AvatarFallback>{name.split(' ').map((part)=> part.charAt(0).toUpperCase()).join('')}</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-64">
