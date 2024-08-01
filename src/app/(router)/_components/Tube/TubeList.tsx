@@ -29,7 +29,6 @@ const VideoList: React.FC<videoListProp> = ({searchVideos}) => {
 
   return (
     <div className="px-10">
-      <h1 className="text-2xl">Videos</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-4">
         {videos.length === 0 ? (
           <p>No videos available</p>

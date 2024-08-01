@@ -19,7 +19,7 @@ const VideoDetail: React.FC = () => {
   const [comments, setComments] = useState<CommentsType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const currentUser = useRecoilValue(userAtom);
-
+  console.log(video);
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
