@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useRecoilState } from 'recoil';
 import { searchVideoAtom } from '@/atoms/searchVideoAtom';
@@ -7,7 +7,7 @@ import VideoList from '../_components/Tube/TubeList';
 import DialogComponent from '../_components/Menu/Dialog';
 import searchVideos from '@/actions/searchVideo';
 
-const Results: React.FC = () => {
+const ResultsComponent: React.FC = () => {
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('search_query');
   const [results, setResults] = useRecoilState(searchVideoAtom);
@@ -54,5 +54,11 @@ const Results: React.FC = () => {
     </div>
   );
 };
+
+const Results: React.FC = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <ResultsComponent />
+  </Suspense>
+);
 
 export default Results;
