@@ -4,7 +4,7 @@ import {  KindeUserType } from '@/types/KindeUser';
 const getStrapiUser = async (userId: string): Promise<KindeUserType | null> => {
 
   try {
-    const response = await axios.get('http://localhost:1337/api/kindeusers', {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URLBASE}/api/kindeusers`, {
       params: {
         'filters[userId][$eq]': userId,
         'populate': '*'

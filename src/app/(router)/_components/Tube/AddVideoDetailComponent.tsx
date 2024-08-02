@@ -28,7 +28,7 @@ const AddVideoDetailComponent: React.FC = () => {
         setImageLoading(true);
 
         const response = await axios.post(
-          'http://localhost:1337/api/upload',
+          `${process.env.NEXT_PUBLIC_STRAPI_API_URLBASE}/api/upload`,
           formData
         );
 
@@ -36,7 +36,7 @@ const AddVideoDetailComponent: React.FC = () => {
           const uploadedImage = response.data[0];
           setUpdateVideo((prev) => ({
             ...prev!,
-            thumbnail: `http://localhost:1337${uploadedImage.url}`,
+            thumbnail: `${process.env.NEXT_PUBLIC_STRAPI_API_URLBASE}/${uploadedImage.url}`,
             thumbnailId: uploadedImage.id
           }));
         }
