@@ -15,11 +15,11 @@ export async function checkAuthStatus() {
 
     try {
         // Check if user exists in the new KindeUsers collection
-        const existingUser = await axios.get(`http://localhost:1337/api/kindeusers?filters[userId][$eq]=${userId}`);
+        const existingUser = await axios.get(`https://strapi-cms-7cc7.onrender.com/api/kindeusers?filters[userId][$eq]=${userId}`);
         
         if (existingUser.data.data.length === 0) {
             // If user doesn't exist, create a new user
-            await axios.post('http://localhost:1337/api/kindeusers', {
+            await axios.post('https://strapi-cms-7cc7.onrender.com/api/kindeusers', {
                 data: {
                     userId: userId,
                     email: email,
