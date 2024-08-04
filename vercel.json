@@ -1,8 +1,7 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/auth/:path*",
-      "destination": "/api/auth/[kindeAuth]/route"
+  "build": {
+    "env": {
+      "NODE_VERSION": "20.x"
     }
-  ]
+  }
 }
