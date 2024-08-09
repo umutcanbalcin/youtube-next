@@ -1,5 +1,4 @@
 "use client";
-
 import { useQuery } from "@tanstack/react-query";
 import { Loader } from "lucide-react";
 import { useEffect } from "react";
